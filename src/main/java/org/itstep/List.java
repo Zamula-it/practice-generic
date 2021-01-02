@@ -1,44 +1,34 @@
 package org.itstep;
-
 import java.util.Arrays;
-
-// FIXME: обобщенный тип должен быть классом расширяющим интерфейс Comparable<T>
-class List<T> {
-    private T[] arrays;
-
+class List<Te extends Comparable<Te>> {
+    private Te[] arr;
+    @SuppressWarnings( "нен проверенно " )
     public List() {
-        // FIXME: создать массив типов Comparable
-        this.arrays = (T[]) new Object[0];
+        this.arr = (Te[]) new Comparable[0];
     }
-
-    public void add(T item) {
-        arrays = Arrays.copyOf(arrays, arrays.length + 1);
-        arrays[arrays.length - 1] = item;
+    public void add(Te tea) {
+        arr = Arrays.copyOf(arr, arr.length + 1);
+        arr[arr.length - 1] = tea;
     }
-
-    public T get(int idx) {
-        return arrays[idx];
+    public Te GetTMP(int tmp) {
+        return arr[tmp];
     }
-
-    public T min() {
-        T min = arrays[0];
-        // FIXME: реализовать поиск наименьшего элемента используя метод compareTo интерфейса IComparable<T>
-        /*for(T item: arrays) {
-            if(item < min) {
-                min = item;
+    public Te min() {
+        Te min = arr[0];
+        for(Te tea: arr) {
+            if(tea.compareTo( min ) < 0) {
+                min = tea;
             }
-        }*/
+        }
         return min;
     }
-
-    public T max() {
-        T max = arrays[0];
-        // FIXME: реализовать поиск наибольшего элемента используя метод compareTo интерфейса IComparable<T>
-        /*for(T item: arrays) {
-            if(item > max) {
-                max = item;
+    public Te max() {
+        Te max = arr[0];
+        for(Te tea: arr) {
+            if(tea.compareTo( max ) > 0) {
+                max = tea;
             }
-        }*/
+        }
         return max;
     }
 }
